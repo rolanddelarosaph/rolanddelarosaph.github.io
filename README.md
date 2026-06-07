@@ -1,4 +1,4 @@
-# Roland Dela Rosa — Junior Data Engineer Portfolio
+# Roland Dela Rosa — Data Engineer Portfolio
 
 **Live site:** https://rolanddelarosaph.github.io
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-Personal portfolio website for Roland Dela Rosa, a Junior Data Engineer and final-year BS Statistics student at Rizal Technological University (DOST Undergraduate Scholar, Magna Cum Laude). Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools, deployed via GitHub Pages.
+Personal portfolio website for Roland Dela Rosa, a Data Engineer and final-year BS Statistics student at Rizal Technological University (DOST Undergraduate Scholar, Magna Cum Laude). Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools, deployed via GitHub Pages.
 
 ---
 
