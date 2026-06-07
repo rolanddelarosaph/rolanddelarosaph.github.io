@@ -3,68 +3,60 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Roland Dela Rosa — Data Engineer</title>
+<title>Roland Dela Rosa — Junior Data Engineer</title>
+<meta name="description" content="Junior Data Engineer — Python, Snowflake, dbt, Apache Airflow, MySQL. Three end-to-end data pipelines on real Philippine and European datasets."/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Fraunces:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#F7F5F0;
-  --surface:#FFFFFF;
-  --ink:#1A1A18;
-  --ink2:#4A4A46;
-  --ink3:#8A8A85;
-  --accent:#2D6A4F;
-  --accent2:#52B788;
-  --accent3:#B7E4C7;
-  --mono:#1B4332;
-  --tag-bg:#E8F5EE;
-  --tag-text:#1B4332;
-  --border:#E2DFD8;
-  --card:#FFFFFF;
-  --warn:#D4A017;
-  --radius:10px;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
-  --font-display:'Fraunces',serif;
+  --bg:#F7F5F0;--ink:#1A1A18;--ink2:#4A4A46;--ink3:#8A8A85;
+  --accent:#2D6A4F;--accent2:#52B788;--tag-bg:#E8F5EE;--tag-text:#1B4332;
+  --border:#E2DFD8;--card:#FFFFFF;--radius:10px;
+  --font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--font-display:'Fraunces',serif;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
 .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
 .nav-logo{font-family:var(--font-mono);font-size:0.85rem;color:var(--accent);letter-spacing:0.04em;font-weight:500}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links{display:flex;gap:1.4rem;list-style:none;align-items:center}
 .nav-links a{font-size:0.82rem;color:var(--ink2);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;font-weight:500;transition:color 0.15s}
 .nav-links a:hover{color:var(--accent)}
-.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.1rem;border-radius:6px;font-size:0.82rem;font-weight:500;text-decoration:none;letter-spacing:0.03em;transition:background 0.15s}
-.nav-cta:hover{background:var(--mono)}
-
-/* HERO */
+.nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.1rem;border-radius:6px;font-size:0.82rem;font-weight:500;text-decoration:none;letter-spacing:0.03em;transition:background 0.15s;display:inline-flex;align-items:center;gap:0.4rem}
+.nav-cta:hover{background:#1B4332}
 .hero{max-width:1100px;margin:0 auto;padding:5rem 2rem 4rem}
-.hero-tag{font-family:var(--font-mono);font-size:0.78rem;color:var(--accent2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem}
+.hero-tag{font-family:var(--font-mono);font-size:0.78rem;color:var(--accent2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:0.6rem}
 .hero-tag::before{content:'';width:32px;height:1px;background:var(--accent2)}
-.hero h1{font-family:var(--font-display);font-weight:300;font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.12;color:var(--ink);margin-bottom:1.4rem;letter-spacing:-0.01em}
-.hero h1 em{font-style:italic;color:var(--accent)}
-.hero-sub{font-size:1.08rem;color:var(--ink2);max-width:560px;line-height:1.7;margin-bottom:2.4rem;font-weight:300}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
-.btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.6rem;border-radius:var(--radius);font-weight:500;font-size:0.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.15s;border:none;cursor:pointer}
-.btn-primary:hover{background:var(--mono)}
-.btn-outline{border:1.5px solid var(--border);color:var(--ink);padding:0.73rem 1.6rem;border-radius:var(--radius);font-weight:500;font-size:0.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.15s;background:transparent;cursor:pointer}
+.hero-name-row{margin-bottom:1.2rem}
+.hero-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--ink3);letter-spacing:0.14em;text-transform:uppercase;display:block;margin-bottom:0.5rem}
+.hero-name{font-family:var(--font-display);font-weight:500;font-size:clamp(3rem,7.5vw,6rem);line-height:1.0;color:var(--ink);letter-spacing:-0.02em;display:block}
+.hero-role{font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,3vw,2rem);line-height:1.2;color:var(--accent);font-style:italic;margin-top:0.3rem;display:block}
+.hero-sub{font-size:1.05rem;color:var(--ink2);max-width:580px;line-height:1.75;margin-bottom:2.4rem;font-weight:300}
+.hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap;align-items:center}
+.btn-primary{background:var(--accent);color:#fff;padding:0.7rem 1.4rem;border-radius:var(--radius);font-weight:500;font-size:0.88rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:background 0.15s;cursor:pointer;border:none;font-family:var(--font-body)}
+.btn-primary:hover{background:#1B4332}
+.btn-outline{border:1.5px solid var(--border);color:var(--ink);padding:0.68rem 1.4rem;border-radius:var(--radius);font-weight:500;font-size:0.88rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.15s;background:transparent}
 .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
 .hero-stack{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
 .stack-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.9rem}
-.stack-pills{display:flex;flex-wrap:wrap;gap:0.5rem}
-.pill{font-family:var(--font-mono);font-size:0.75rem;background:var(--tag-bg);color:var(--tag-text);padding:0.3rem 0.8rem;border-radius:4px;letter-spacing:0.04em;font-weight:500}
-
-/* SECTION */
+.stack-pills{display:flex;flex-wrap:wrap;gap:0.45rem;max-width:680px}
+.pill{font-family:var(--font-mono);font-size:0.74rem;padding:0.3rem 0.75rem;border-radius:5px;letter-spacing:0.03em;font-weight:500;display:inline-flex;align-items:center;gap:0.35rem;border:1.5px solid;white-space:nowrap}
+.pill img{width:13px;height:13px;object-fit:contain}
+.pill-python{background:#EEF6FF;color:#1e56b0;border-color:#93c5fd}
+.pill-sql{background:#EDFAF3;color:#1a6b40;border-color:#6ee7b7}
+.pill-airflow{background:#EEF0FF;color:#3730a3;border-color:#a5b4fc}
+.pill-dbt{background:#FFF3EE;color:#c2380a;border-color:#fdba74}
+.pill-snowflake{background:#EBF8FF;color:#0369a1;border-color:#7dd3fc}
+.pill-mysql{background:#FFFBEB;color:#92400e;border-color:#fcd34d}
+.pill-medallion{background:#F4F4F5;color:#52525b;border-color:#d4d4d8}
+.pill-api{background:#F5F3FF;color:#6d28d9;border-color:#c4b5fd}
+.pill-pymc{background:#FDF4FF;color:#7e22ce;border-color:#e879f9}
+.pill-tableau{background:#FFF7ED;color:#b45309;border-color:#f59e0b}
 section{max-width:1100px;margin:0 auto;padding:4rem 2rem}
 .section-label{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem}
 .section-label::before{content:'';width:24px;height:1px;background:var(--accent2)}
 .section-title{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--ink);margin-bottom:2.5rem;line-height:1.2}
-
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
 .about-text p{color:var(--ink2);font-size:1rem;line-height:1.75;margin-bottom:1rem;font-weight:300}
 .about-text p:last-child{margin-bottom:0}
@@ -74,63 +66,46 @@ section{max-width:1100px;margin:0 auto;padding:4rem 2rem}
 .meta-card .value{font-size:0.92rem;color:var(--ink);font-weight:400;line-height:1.5}
 .meta-card .value a{color:var(--accent);text-decoration:none}
 .meta-card .value a:hover{text-decoration:underline}
-
-/* EXPERIENCE TIMELINE */
 .timeline{position:relative;padding-left:2rem}
 .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
 .tl-item{position:relative;margin-bottom:2.2rem;padding-left:1.2rem}
 .tl-item::before{content:'';position:absolute;left:-2.4rem;top:0.45rem;width:8px;height:8px;border-radius:50%;background:var(--accent2);border:2px solid var(--bg)}
 .tl-date{font-family:var(--font-mono);font-size:0.72rem;color:var(--ink3);letter-spacing:0.08em;margin-bottom:0.25rem}
-.tl-role{font-size:0.98rem;font-weight:500;color:var(--ink);margin-bottom:0.1rem}
+.tl-role{font-size:0.98rem;font-weight:600;color:var(--ink);margin-bottom:0.1rem}
 .tl-company{font-size:0.88rem;color:var(--accent);font-weight:400;margin-bottom:0.5rem}
-.tl-desc{font-size:0.88rem;color:var(--ink2);line-height:1.6;font-weight:300}
-
-/* PROJECTS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-.project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column}
+.tl-desc{font-size:0.88rem;color:var(--ink2);line-height:1.65;font-weight:300}
+.tl-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.65rem}
+.tl-tag{font-family:var(--font-mono);font-size:0.68rem;background:var(--tag-bg);color:var(--tag-text);padding:0.18rem 0.6rem;border-radius:3px;letter-spacing:0.03em}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column;cursor:pointer;position:relative}
 .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.09)}
-.project-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;min-height:340px}
-.project-visual{background:linear-gradient(135deg,#1B4332 0%,#2D6A4F 60%,#40916C 100%);position:relative;overflow:hidden;min-height:200px;display:flex;align-items:center;justify-content:center;padding:2rem}
-.project-card.featured .project-visual{min-height:auto}
-.arch-diagram{width:100%;max-width:340px}
-.arch-diagram svg{width:100%}
+.project-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+.marquee-wrap{overflow:hidden;width:100%;height:100%;background:var(--bg);position:relative;display:flex;align-items:center}
+.marquee-track{display:flex;width:max-content;animation:marquee-scroll 18s linear infinite;align-items:center}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-track img{height:100%;max-height:360px;width:auto;display:block;flex-shrink:0}
+@keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.project-img-wrap{width:100%;overflow:hidden;height:220px;background:var(--bg)}
+.project-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .project-body{padding:1.6rem;display:flex;flex-direction:column;flex:1}
 .project-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-mono);font-size:0.68rem;color:var(--accent2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;background:var(--tag-bg);padding:0.25rem 0.7rem;border-radius:4px;width:fit-content}
+.thesis-badge{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--font-mono);font-size:0.68rem;color:#7c3a00;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;background:#fff3e0;padding:0.25rem 0.7rem;border-radius:4px;width:fit-content;border:1px solid #ffe0b2;animation:float-badge 2.8s ease-in-out infinite}
+@keyframes float-badge{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .project-card h3{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--ink);margin-bottom:0.6rem;line-height:1.3}
-.project-card p{font-size:0.88rem;color:var(--ink2);line-height:1.65;font-weight:300;flex:1;margin-bottom:1.1rem}
+.project-card p{font-size:0.87rem;color:var(--ink2);line-height:1.65;font-weight:300;flex:1;margin-bottom:1.1rem}
 .project-tools{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem}
 .tool-tag{font-family:var(--font-mono);font-size:0.7rem;color:var(--ink3);background:var(--bg);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;letter-spacing:0.04em}
-.project-links{display:flex;gap:0.6rem;margin-top:auto}
-.proj-link{font-size:0.82rem;font-weight:500;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem;transition:color 0.15s;font-family:var(--font-mono)}
-.proj-link:hover{color:var(--mono)}
-
-/* EXPAND DETAILS */
-.expand-btn{background:none;border:1px solid var(--border);color:var(--ink2);font-size:0.8rem;font-family:var(--font-mono);padding:0.35rem 0.8rem;border-radius:5px;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.15s;letter-spacing:0.04em}
+.project-links{display:flex;gap:0.6rem;margin-top:auto;flex-wrap:wrap;align-items:center}
+.proj-link{font-size:0.82rem;font-weight:500;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:0.35rem;transition:color 0.15s;font-family:var(--font-mono);position:relative;z-index:2}
+.proj-link:hover{color:#1B4332}
+.expand-btn{background:none;border:1px solid var(--border);color:var(--ink2);font-size:0.8rem;font-family:var(--font-mono);padding:0.35rem 0.8rem;border-radius:5px;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem;transition:all 0.15s;letter-spacing:0.04em;position:relative;z-index:2}
 .expand-btn:hover{border-color:var(--accent);color:var(--accent)}
 .expand-panel{display:none;padding:1rem 1.6rem 1.4rem;border-top:1px solid var(--border);background:var(--bg)}
 .expand-panel.open{display:block}
-.detail-block{margin-bottom:0.9rem}
-.detail-block:last-child{margin-bottom:0}
+.expand-panel.full-width{grid-column:1/-1}
+dl.detail-list{display:flex;flex-direction:column;gap:0.9rem}
 .detail-block dt{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.25rem}
 .detail-block dd{font-size:0.85rem;color:var(--ink2);line-height:1.6}
-
-/* SLIDESHOW in featured card visual */
-.slide-container{position:relative;width:100%;height:100%;min-height:240px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.slide{position:absolute;width:100%;height:100%;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.8s ease;padding:1.5rem}
-.slide.active{opacity:1}
-.slide-content{color:#fff;text-align:center}
-.slide-content .slide-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.6;margin-bottom:0.6rem}
-.slide-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
-.slide-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.35);cursor:pointer;border:none;transition:background 0.2s}
-.slide-dot.active{background:rgba(255,255,255,0.9)}
-
-/* pipeline viz */
-.pipe-viz{display:flex;flex-direction:column;gap:6px;width:100%;max-width:300px}
-.pipe-step{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:6px 12px;display:flex;align-items:center;gap:8px;font-size:0.75rem;color:#fff;font-family:var(--font-mono)}
-.pipe-step .ps-icon{font-size:0.85rem;opacity:0.8}
-.pipe-arrow{width:1px;height:10px;background:rgba(255,255,255,0.25);margin:0 auto}
-
-/* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
 .contact-info p{color:var(--ink2);font-size:1rem;line-height:1.75;font-weight:300;margin-bottom:1.5rem}
 .contact-list{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
@@ -143,39 +118,40 @@ section{max-width:1100px;margin:0 auto;padding:4rem 2rem}
 .form-group input,.form-group textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:0.65rem 0.85rem;font-family:var(--font-body);font-size:0.9rem;color:var(--ink);background:var(--bg);transition:border-color 0.15s;resize:vertical}
 .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent2)}
 .form-group textarea{min-height:110px}
-.form-note{font-size:0.78rem;color:var(--ink3);margin-top:0.5rem;display:none}
-.form-note.show{display:block}
-
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center}
-footer p{font-family:var(--font-mono);font-size:0.75rem;color:var(--ink3);letter-spacing:0.05em}
-
-/* DIVIDER */
+.form-status{font-family:var(--font-mono);font-size:0.8rem;margin-top:0.8rem;padding:0.6rem 0.9rem;border-radius:6px;display:none}
+.form-status.success{display:block;background:var(--tag-bg);color:var(--accent);border:1px solid var(--accent2)}
+.form-status.error{display:block;background:#FEE2E2;color:#991B1B;border:1px solid #FCA5A5}
+footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.footer-links{display:flex;gap:1.6rem;flex-wrap:wrap;justify-content:center}
+.footer-links a{font-family:var(--font-mono);font-size:0.78rem;color:var(--ink3);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;transition:color 0.15s;letter-spacing:0.04em}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{font-family:var(--font-mono);font-size:0.72rem;color:var(--ink3);letter-spacing:0.05em}
 .divider{max-width:1100px;margin:0 auto;padding:0 2rem}
 .divider hr{border:none;border-top:1px solid var(--border)}
-
-@media(max-width:800px){
+.status-dot{width:7px;height:7px;border-radius:50%;background:#52B788;display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero-tag{animation:fadeUp 0.45s ease both}
+.hero-name-row{animation:fadeUp 0.55s ease both 0.06s}
+.hero-sub{animation:fadeUp 0.55s ease both 0.12s}
+.hero-actions{animation:fadeUp 0.55s ease both 0.18s}
+.hero-stack{animation:fadeUp 0.55s ease both 0.24s}
+@media(max-width:900px){
   .about-grid,.contact-grid{grid-template-columns:1fr}
-  .project-card.featured{grid-template-columns:1fr}
-  nav .nav-links li:not(:last-child){display:none}
+  .projects-grid{grid-template-columns:1fr}
+  .project-card.featured{grid-template-columns:1fr;grid-column:1}
+  .expand-panel.full-width{grid-column:1}
+  .marquee-wrap{min-height:220px}
+  .marquee-track img{height:220px}
+  nav .nav-links li:nth-child(n+3){display:none}
 }
 @media(max-width:580px){
   .hero{padding:3rem 1.2rem 2.5rem}
   section{padding:3rem 1.2rem}
   .divider{padding:0 1.2rem}
+  .hero-actions{flex-direction:column;align-items:flex-start}
 }
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-.hero-tag,.hero h1,.hero-sub,.hero-actions,.hero-stack{animation:fadeUp 0.55s ease both}
-.hero h1{animation-delay:0.06s}
-.hero-sub{animation-delay:0.12s}
-.hero-actions{animation-delay:0.18s}
-.hero-stack{animation-delay:0.24s}
-
-/* STATUS dot */
-.status-dot{width:7px;height:7px;border-radius:50%;background:#52B788;display:inline-block;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
 </style>
 </head>
 <body>
@@ -184,69 +160,199 @@ footer p{font-family:var(--font-mono);font-size:0.75rem;color:var(--ink3);letter
   <div class="nav-inner">
     <span class="nav-logo">roland.delarosa</span>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="resume.pdf" download><i class="fa-solid fa-download" style="font-size:0.8rem"></i> Resume</a>
+    <a class="nav-cta" href="#contact"><i class="fa-solid fa-paper-plane" style="font-size:0.78rem"></i> Get in Touch</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="top">
   <div class="hero-tag"><span class="status-dot"></span> Open to opportunities · Philippines</div>
-  <h1>Roland Dela Rosa<br><em>Data Engineer</em></h1>
-  <p class="hero-sub">I build reliable data pipelines and systems that turn raw, messy data into something teams can actually trust and use. Coming from a statistics background — so I care about the numbers too, not just the plumbing.</p>
+  <div class="hero-name-row">
+    <span class="hero-label">Junior Data Engineer</span>
+    <span class="hero-name">ROLAND DELA ROSA</span>
+    <span class="hero-role">Pipelines, warehouses, and the statistics to interpret them.</span>
+  </div>
+  <p class="hero-sub">Statistics graduate who builds data pipelines from the ground up. Two cloud ELT pipelines on real Philippine government data and one SQL data warehouse on European business data — all automated, tested, and in production. I know what the data actually means, not just how to move it.</p>
   <div class="hero-actions">
     <a class="btn-primary" href="#projects"><i class="fa-solid fa-folder-open"></i> View Projects</a>
     <a class="btn-outline" href="https://github.com/rolanddelarosaph" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-    <a class="btn-outline" href="resume.pdf" download><i class="fa-solid fa-download"></i> Download Resume</a>
+    <a class="btn-outline" href="https://www.linkedin.com/in/roland-dela-rosa-5595713b9/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    <a class="btn-outline" href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
   </div>
   <div class="hero-stack">
     <div class="stack-label">Core stack</div>
     <div class="stack-pills">
-      <span class="pill">Python</span>
-      <span class="pill">SQL</span>
-      <span class="pill">Apache Airflow</span>
-      <span class="pill">dbt</span>
-      <span class="pill">Snowflake</span>
-      <span class="pill">PostgreSQL</span>
-      <span class="pill">REST APIs</span>
-      <span class="pill">Pandas</span>
-      <span class="pill">PyMC</span>
-      <span class="pill">Power BI</span>
+      <span class="pill pill-python"><i class="fa-brands fa-python"></i> Python</span>
+      <span class="pill pill-sql"><i class="fa-solid fa-database"></i> SQL</span>
+      <span class="pill pill-airflow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg" alt=""/> Apache Airflow</span>
+      <span class="pill pill-dbt">⬡ dbt</span>
+      <span class="pill pill-snowflake">❄ Snowflake</span>
+      <span class="pill pill-mysql"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt=""/> MySQL</span>
+      <span class="pill pill-medallion"><i class="fa-solid fa-layer-group"></i> Medallion Architecture</span>
+      <span class="pill pill-api"><i class="fa-solid fa-bolt"></i> REST APIs</span>
+      <span class="pill pill-pymc">〜 PyMC · Bambi</span>
+      <span class="pill pill-tableau"><i class="fa-solid fa-chart-bar"></i> Tableau</span>
     </div>
   </div>
 </div>
 
 <div class="divider"><hr></div>
 
-<!-- ABOUT -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2 class="section-title">WHAT I'VE BUILT</h2>
+  <div class="projects-grid">
+
+    <div class="project-card featured" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/ph-food-price-pipeline')">
+      <div class="marquee-wrap">
+        <div class="marquee-track" id="marquee-food">
+          <img src="images/architecture food pipeline.png" alt="Pipeline Architecture"/>
+          <img src="images/ph_food_price_dashboard.png" alt="Tableau Dashboard"/>
+          <img src="images/architecture food pipeline.png" alt="Pipeline Architecture"/>
+          <img src="images/ph_food_price_dashboard.png" alt="Tableau Dashboard"/>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-badge">Cloud Data Engineering · ELT</div>
+        <h3>PHILIPPINE FOOD PRICE ANALYTICS PIPELINE</h3>
+        <p>Cloud ELT pipeline built on the Medallion Architecture — ingesting food price data from three real sources (WFP market CSVs, PSA CPI Excel files, and a live BSP exchange rate API) into Snowflake, transforming through dbt-modelled Bronze → Silver → Gold layers with 20 data quality tests, and scheduled monthly via a 4-task Apache Airflow DAG on Astronomer Cloud. The Gold star schema feeds a live Tableau dashboard and two Python notebooks for price trend analysis and forecasting.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span><span class="tool-tag">Snowflake</span><span class="tool-tag">dbt</span>
+          <span class="tool-tag">Apache Airflow</span><span class="tool-tag">Astronomer Cloud</span>
+          <span class="tool-tag">BSP Live API</span><span class="tool-tag">Prophet</span>
+          <span class="tool-tag">Tableau</span><span class="tool-tag">300K+ rows</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://github.com/rolanddelarosaph/ph-food-price-pipeline" target="_blank" onclick="event.stopPropagation()"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a class="proj-link" href="https://public.tableau.com/app/profile/roland.dela.rosa/viz/PHFoodPriceDashboard/DASHBOARD" target="_blank" onclick="event.stopPropagation()"><i class="fa-solid fa-chart-line"></i> Live Dashboard</a>
+          <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-food',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
+        </div>
+      </div>
+      <div class="expand-panel full-width" id="expand-food">
+        <dl class="detail-list">
+          <div class="detail-block"><dt>Pipeline design</dt><dd>Three ingestion scripts load from different source formats into Snowflake Bronze as-is — WFP CSV (121,512 rows), PSA CPI multi-sheet Excel (179,289 rows), and a live BSP API call that appends one new exchange rate row per monthly run rather than overwriting. dbt handles all transformations: Silver models standardize column types, deduplicate via ROW_NUMBER(), and unpivot the PSA CPI from wide to long format. Gold builds a star schema — dim_region, dim_commodity, dim_date, dim_market + fact_food_prices — with surrogate keys and a price-to-CPI ratio column as the core analytical metric. The 4-task Airflow DAG (ingest → silver → gold → dbt test) runs on the 1st of every month; if any dbt test fails, the pipeline halts before bad data reaches Gold.</dd></div>
+          <div class="detail-block"><dt>Data quality</dt><dd>20 dbt tests cover not_null, unique, accepted_values, and referential integrity across all Silver and Gold models. Tests run as the final DAG task — PASS=20, WARN=0, ERROR=0. The Bronze layer is never overwritten, preserving a full raw audit trail for every monthly run.</dd></div>
+          <div class="detail-block"><dt>Analytics &amp; findings</dt><dd>BSP lag correlation analysis: peso depreciation leads food price increases by 1–2 months (r=0.29, p=0.018). Prophet forecasting with and without BSP as regressor diverges during depreciation periods — confirming exchange rate adds genuine forecast signal. Key findings: NCR food prices run 60+ index points above PSA CPI. Meat, fish, and eggs surged 80.6% from 2018–2023. Luzon is 19.7% more expensive than Mindanao for the same WFP basket.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce')">
+      <div class="project-img-wrap">
+        <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+      </div>
+      <div class="project-body">
+        <div class="project-badge">Data Warehouse · Business Analytics</div>
+        <h3>EUROPEAN FASHION RETAIL DATA WAREHOUSE</h3>
+        <p>End-to-end SQL data warehouse built entirely in MySQL and Python — no cloud services, no orchestration tools. A single python main.py command runs the full 4-stage pipeline (Bronze → Silver → Gold) wrapped in a MySQL transaction that rolls back on any failure. Stored procedures handle all Silver transformations. The Gold star schema is built with foreign key constraints, indexed fact table, and 4 BI-ready views, supporting 14 business analytics queries across revenue, products, customers, campaigns, and inventory.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MySQL 8.0</span><span class="tool-tag">Python</span>
+          <span class="tool-tag">Stored Procedures</span><span class="tool-tag">Star Schema</span>
+          <span class="tool-tag">Window Functions</span><span class="tool-tag">CTEs</span>
+          <span class="tool-tag">RANK() · LAG()</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce" target="_blank" onclick="event.stopPropagation()"><i class="fa-brands fa-github"></i> GitHub</a>
+          <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-fashion',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
+        </div>
+      </div>
+      <div class="expand-panel" id="expand-fashion">
+        <dl class="detail-list">
+          <div class="detail-block"><dt>Pipeline design</dt><dd>Bronze: 7 tables loaded via LOAD DATA LOCAL INFILE (fastest MySQL bulk-load method), truncated and reloaded on each run for idempotency. Silver: a stored procedure (transform_silver_layer()) applies type casting for all IDs, dates, and decimals; strips percentage characters; trims whitespace; and removes duplicates via ROW_NUMBER() — all in one transactional call. Gold: star schema with dim_customer, dim_product, dim_campaign + fact_sales (2,253 rows), surrogate keys, foreign keys, and indexed on sale_date and customer_id. Campaign attribution joins on channel + date range so each line item is automatically attributed to the active campaign — no manual tagging. Full pipeline wraps every stage in a single MySQL transaction — any failure triggers a complete rollback.</dd></div>
+          <div class="detail-block"><dt>Data quality &amp; execution</dt><dd>SQL-based quality tests: row count checks per layer, null checks on all primary keys, referential integrity validation, duplicate checks on dimension keys, and discount logic validation. Pipeline logs every stage to pipeline.log with timestamps — exits code 1 on failure, code 0 on success.</dd></div>
+          <div class="detail-block"><dt>Business findings</dt><dd>€324,236 revenue · 905 orders · €358 AOV. Only 9.8% of orders were discounted (avg 24.3% off) — 92.7% of revenue is full-price, meaning healthy margin discipline. 55% of product-country inventory positions at critical stock levels, with the stockout risk query identifying which high-velocity SKUs are also most exposed — the highest-replenishment-priority items.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline')">
+      <div class="project-img-wrap">
+        <img src="images/architecture lfs.png" alt="PSA LFS Educational Mobility Pipeline Architecture"/>
+      </div>
+      <div class="project-body">
+        <div class="thesis-badge">🎓 UNDERGRADUATE THESIS</div>
+        <h3>PSA LABOR FORCE SURVEY EDUCATIONAL MOBILITY PIPELINE &amp; BAYESIAN ANALYSIS</h3>
+        <p>Built as an undergraduate thesis — an ETL pipeline that processes 11.28 million rows of PSA Labor Force Survey microdata across 48 quarterly files (2010–2024), then applies a Bayesian Multilevel Model to measure how strongly a parent's education predicts their child's education across all 17 Philippine regions. The engineering challenge: PSA changed column names across survey redesigns, and the K-12 reform in 2016 changed what education codes mean mid-dataset — both required custom schema handling before any modelling could happen.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span><span class="tool-tag">PyMC · Bambi</span>
+          <span class="tool-tag">ArviZ</span><span class="tool-tag">ETL Pipeline</span>
+          <span class="tool-tag">PSA LFS microdata</span><span class="tool-tag">11.28M rows</span>
+          <span class="tool-tag">Bayesian MLM</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline" target="_blank" onclick="event.stopPropagation()"><i class="fa-brands fa-github"></i> GitHub</a>
+          <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-lfs',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
+        </div>
+      </div>
+      <div class="expand-panel" id="expand-lfs">
+        <dl class="detail-list">
+          <div class="detail-block"><dt>ETL pipeline</dt><dd>PSA used three different column schemas across survey years, and the K-12 reform created two incompatible grade code systems mid-2016 — the same numeric code means a different education level depending on the quarter. A schema config registry routes each file to the correct column names and grade map automatically. A 12-step cleaning pipeline then pairs parents and children within households, applies age gap filters to remove implausible pairs, and logs every run. python main.py processes all 48 files end-to-end.</dd></div>
+          <div class="detail-block"><dt>Bayesian model</dt><dd>Multilevel Linear Model via Bambi/PyMC: 4 chains × 2,000 draws, all R-hat &lt; 1.01. Predictors: father's and mother's schooling years (with quadratic terms), children per household, child age, and survey year fixed effects. Region-level random intercepts and random slopes allow the father-education effect to vary by region. Prior sensitivity confirmed across 3 specifications.</dd></div>
+          <div class="detail-block"><dt>Key findings</dt><dd>For every additional year of a father's education, a son completes 0.265 more years of schooling on average — a substantial national-level persistence. Regional slopes range 0.244–0.280 but all credible intervals overlap, meaning this is a structural national problem, not isolated to any one region. Mother's education has a stronger and more regionally variable effect (0.249 in NCR to 0.385 in Davao). BARMM has the lowest average son schooling nationally at 8.86 years.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">WORK HISTORY</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Nov 2024 – Present</div>
+      <div class="tl-role">SENIOR PROCESS EXECUTIVE</div>
+      <div class="tl-company">Cognizant Technology Solutions · Taguig, Metro Manila</div>
+      <div class="tl-desc">Use query languages to extract and explore operational data from large-scale reporting systems, supporting root cause analysis and performance investigations. Analyze SLA metrics, resolution trends, and workgroup quality data to surface data-driven insights. One of the senior PEs responsible for data-backed issue resolution and stakeholder reporting across global operations.</div>
+      <div class="tl-tags"><span class="tl-tag">Query Languages</span><span class="tl-tag">Root Cause Analysis</span><span class="tl-tag">Performance Reporting</span><span class="tl-tag">SLA Analysis</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2023 – 2026 · Freelance</div>
+      <div class="tl-role">STATISTICAL CONSULTANT — DATA ANALYSIS &amp; THESIS ADVISORY</div>
+      <div class="tl-company">Independent · Metro Manila</div>
+      <div class="tl-desc">Assisted undergraduate and graduate students with end-to-end statistical analysis — from data cleaning and exploratory analysis through model selection, fitting, and interpretation of results. Work spans regression modeling, Bayesian analysis, and survey data analysis on real datasets from education, health, and social sciences.</div>
+      <div class="tl-tags"><span class="tl-tag">Statistical Modelling</span><span class="tl-tag">Bayesian Analysis</span><span class="tl-tag">Python</span><span class="tl-tag">Research Design</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Sep 2022 – Jun 2024</div>
+      <div class="tl-role">CUSTOMER SERVICE ASSOCIATE · BUSINESS ANALYST INTERN</div>
+      <div class="tl-company">Amazon · Pasay, Metro Manila</div>
+      <div class="tl-desc">Built an automated Excel performance tracking dashboard adopted department-wide for monitoring agent KPIs, SLA adherence, and team metrics in real time — replacing manual reporting across multiple teams. Performed ongoing business analysis on team performance data. Recognized as Consistent Top Performer for 2022 and 2023.</div>
+      <div class="tl-tags"><span class="tl-tag">Excel Dashboards</span><span class="tl-tag">Business Analysis</span><span class="tl-tag">KPI Tracking</span><span class="tl-tag">Process Automation</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
 <section id="about">
   <div class="section-label">About</div>
-  <h2 class="section-title">A bit about me</h2>
+  <h2 class="section-title">A BIT ABOUT ME</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm a statistics graduate transitioning into data engineering — the shift felt natural because I was already spending most of my time building the pipelines and cleaning the data before the analysis even started.</p>
-      <p>What I like about data engineering is that it's honest work. A pipeline either runs or it doesn't. The data either lands clean or it doesn't. There's a craft in building something that holds up over time, and that's what I'm after.</p>
-      <p>Outside of work I tend to think about data systems the way some people think about infrastructure — how things move, where they break, and what it takes to make them resilient.</p>
+      <p>I'm a statistics graduate who got serious about data engineering because I kept ending up doing pipeline work anyway. Every analysis starts with getting the data right — and I found I was genuinely more interested in that part than anything else.</p>
+      <p>What I bring beyond data engineering skills is a real statistical foundation. I know what CPI actually measures, I understand how survey sampling design affects downstream analysis, and I've worked with real government microdata at the regional level. That shapes how I design pipelines — not just whether the data loads, but whether it means what it's supposed to mean.</p>
+      <p>All three projects are built on real datasets. Working on data that matters to you is how you end up building things properly rather than just getting them to run.</p>
     </div>
     <div class="about-meta">
       <div class="meta-card">
         <div class="label">Education</div>
-        <div class="value">BS Statistics<br><span style="color:var(--ink3);font-size:0.85rem">University · Philippines · 2025</span></div>
+        <div class="value">BS STATISTICS<br><span style="color:var(--ink3);font-size:0.85rem">DOST SCHOLAR · MAGNA CUM LAUDE<br>Rizal Technological University · 2026</span></div>
       </div>
       <div class="meta-card">
         <div class="label">Contact</div>
-        <div class="value">
-          <a href="mailto:roland.delarosa.ph@gmail.com">roland.delarosa.ph@gmail.com</a><br>
-          <span style="color:var(--ink3);font-size:0.85rem">+63 927 326 3487</span>
-        </div>
+        <div class="value"><a href="mailto:roland.delarosa.ph@gmail.com">roland.delarosa.ph@gmail.com</a><br><span style="color:var(--ink3);font-size:0.85rem">+63 927 326 3487</span></div>
       </div>
       <div class="meta-card">
-        <div class="label">Currently</div>
-        <div class="value"><span class="status-dot"></span> &nbsp;Available for junior / entry-level Data Engineering roles</div>
+        <div class="label">Status</div>
+        <div class="value"><span class="status-dot"></span>&nbsp; Available for Junior Data Engineering roles</div>
       </div>
     </div>
   </div>
@@ -254,293 +360,117 @@ footer p{font-family:var(--font-mono);font-size:0.75rem;color:var(--ink3);letter
 
 <div class="divider"><hr></div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Experience</div>
-  <h2 class="section-title">Work history</h2>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-date">2024 – 2025</div>
-      <div class="tl-role">Data Analyst Intern</div>
-      <div class="tl-company"><!-- Add company name -->[Most Recent Company]</div>
-      <div class="tl-desc">Built automated reporting pipelines in Python and SQL. Consolidated survey data, applied design weights, and delivered weekly dashboards to stakeholders. Reduced manual reporting time significantly.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2023</div>
-      <div class="tl-role">Statistical Research Assistant</div>
-      <div class="tl-company">[University / Research Unit]</div>
-      <div class="tl-desc">Processed labor force survey microdata, supported faculty research on educational mobility. Cleaned and reshaped large cross-sectional datasets for multilevel modelling.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-date">2022 – 2023</div>
-      <div class="tl-role">Freelance Data & Reporting Work</div>
-      <div class="tl-company">Various clients</div>
-      <div class="tl-desc">Created Excel-based performance trackers, KPI summaries, and small automation scripts for local teams and small businesses.</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Projects</div>
-  <h2 class="section-title">What I've built</h2>
-
-  <div class="projects-grid">
-
-    <!-- FEATURED: Philippine Food Price Pipeline -->
-    <div class="project-card featured" id="proj-food">
-      <div class="project-visual">
-        <div class="slide-container" id="slideshow-food">
-          <div class="slide active">
-            <div class="slide-content">
-              <div class="slide-label">Pipeline architecture</div>
-              <div class="pipe-viz">
-                <div class="pipe-step"><span class="ps-icon">🌐</span> BSP API — USD/PHP rate</div>
-                <div class="pipe-arrow"></div>
-                <div class="pipe-step"><span class="ps-icon">📦</span> Kaggle — PH food prices</div>
-                <div class="pipe-arrow"></div>
-                <div class="pipe-step"><span class="ps-icon">📊</span> PSA — Food price index</div>
-                <div class="pipe-arrow"></div>
-                <div class="pipe-step"><span class="ps-icon">🐍</span> Python ingestion layer</div>
-                <div class="pipe-arrow"></div>
-                <div class="pipe-step"><span class="ps-icon">❄️</span> Snowflake — raw layer</div>
-                <div class="pipe-arrow"></div>
-                <div class="pipe-step"><span class="ps-icon">🔧</span> dbt — bronze → silver → gold</div>
-                <div class="pipe-arrow"></div>
-                <div class="pipe-step"><span class="ps-icon">⏱</span> Airflow — scheduled runs</div>
-              </div>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="slide-content">
-              <div class="slide-label">Orchestration</div>
-              <div style="font-family:'DM Mono',monospace;font-size:0.78rem;text-align:left;background:rgba(0,0,0,0.25);padding:1.2rem;border-radius:8px;line-height:1.8;color:rgba(255,255,255,0.88)">
-                <div style="color:#B7E4C7">@dag(schedule='0 6 * * *')</div>
-                <div>def ph_food_pipeline():</div>
-                <div>&nbsp;&nbsp;ingest_bsp_api()</div>
-                <div>&nbsp;&nbsp;ingest_kaggle_dataset()</div>
-                <div>&nbsp;&nbsp;ingest_psa_index()</div>
-                <div>&nbsp;&nbsp;run_dbt_models()</div>
-                <div>&nbsp;&nbsp;validate_gold_layer()</div>
-              </div>
-            </div>
-          </div>
-          <div class="slide">
-            <div class="slide-content">
-              <div class="slide-label">Data layers</div>
-              <div style="display:flex;flex-direction:column;gap:10px;width:280px">
-                <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 14px;text-align:left">
-                  <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Bronze — raw</div>
-                  <div style="font-size:0.82rem;color:#fff">As-is ingestion from sources. No transforms. Audit trail preserved.</div>
-                </div>
-                <div style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:10px 14px;text-align:left">
-                  <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Silver — cleaned</div>
-                  <div style="font-size:0.82rem;color:#fff">Standardized schema, currency conversion, deduplication, nulls handled.</div>
-                </div>
-                <div style="background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);border-radius:8px;padding:10px 14px;text-align:left">
-                  <div style="font-family:'DM Mono',monospace;font-size:0.68rem;color:#B7E4C7;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px">Gold — analytics-ready</div>
-                  <div style="font-size:0.82rem;color:#fff">Aggregated price trends, category breakdowns, inflation metrics.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slide-dots" id="dots-food"></div>
-        </div>
-      </div>
-      <div class="project-body">
-        <div class="project-badge">⭐ Main project</div>
-        <h3>Philippine Food Price Data Pipeline</h3>
-        <p>End-to-end data engineering pipeline tracking food price trends in the Philippines. Pulls live USD/PHP rates from the BSP API, combines Kaggle food price data with PSA's official price index, loads into Snowflake, and transforms through a medallion architecture using dbt. Scheduled daily with Apache Airflow.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Python</span>
-          <span class="tool-tag">Apache Airflow</span>
-          <span class="tool-tag">Snowflake</span>
-          <span class="tool-tag">dbt</span>
-          <span class="tool-tag">REST API</span>
-          <span class="tool-tag">Kaggle datasets</span>
-          <span class="tool-tag">PSA data</span>
-          <span class="tool-tag">SQL</span>
-        </div>
-        <div class="project-links">
-          <a class="proj-link" href="https://github.com/rolanddelarosaph" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-          <button class="expand-btn" onclick="toggleExpand('expand-food',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
-        </div>
-      </div>
-      <div class="expand-panel" id="expand-food" style="grid-column:1/-1">
-        <dl>
-          <div class="detail-block"><dt>Problem</dt><dd>Food prices in the Philippines are reported across multiple fragmented sources — no single pipeline unified them for time-series analysis or inflation tracking.</dd></div>
-          <div class="detail-block"><dt>What was built</dt><dd>A fully automated ELT pipeline: Python scripts ingest data from 3 sources, load raw files to Snowflake's bronze layer, then dbt models transform through silver (cleaning, currency conversion) to gold (analytics-ready aggregates). Airflow runs the full DAG daily at 6 AM.</dd></div>
-          <div class="detail-block"><dt>Key engineering decisions</dt><dd>Medallion architecture keeps raw data immutable for audit. dbt handles all SQL transforms with version-controlled models and built-in tests. Airflow provides dependency management and retry logic.</dd></div>
-          <div class="detail-block"><dt>Results</dt><dd>Produces daily-refreshed price trend tables broken down by commodity category. Enables inflation analysis across time periods correlated with USD/PHP rate movements.</dd></div>
-        </dl>
-      </div>
-    </div>
-
-    <!-- SQL Data Warehouse -->
-    <div class="project-card" id="proj-sql">
-      <div class="project-visual" style="background:linear-gradient(135deg,#1c3a5e 0%,#2d5a8a 70%,#3d7ab5 100%);min-height:180px">
-        <div style="font-family:'DM Mono',monospace;font-size:0.78rem;color:rgba(255,255,255,0.85);padding:1.5rem;text-align:left;width:100%">
-<pre style="margin:0;line-height:1.7;font-size:0.72rem;overflow:hidden">WITH rfm AS (
-  SELECT customer_id,
-    DATEDIFF('day',MAX(order_date),CURRENT_DATE) recency,
-    COUNT(DISTINCT order_id) frequency,
-    SUM(amount) monetary
-  FROM fct_orders GROUP BY 1
-)
-SELECT *, NTILE(5) OVER
-  (ORDER BY monetary DESC)
-  AS m_score FROM rfm</pre>
-        </div>
-      </div>
-      <div class="project-body">
-        <div class="project-badge">SQL · Data Warehouse</div>
-        <h3>Sales Data Warehouse — Bronze/Silver/Gold</h3>
-        <p>Designed a dimensional data warehouse from raw transactional sales data. Built fact/dimension tables, ETL transformations, RFM customer segmentation, and automated monthly snapshot reports.</p>
-        <div class="project-tools">
-          <span class="tool-tag">SQL</span>
-          <span class="tool-tag">PostgreSQL</span>
-          <span class="tool-tag">Window functions</span>
-          <span class="tool-tag">CTEs</span>
-          <span class="tool-tag">Dimensional modelling</span>
-        </div>
-        <div class="project-links">
-          <a class="proj-link" href="https://github.com/rolanddelarosaph/Customer-and-Product-Sales-Data-Reporting-and-Analysis-Part-2-" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-          <button class="expand-btn" onclick="toggleExpand('expand-sql',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
-        </div>
-      </div>
-      <div class="expand-panel" id="expand-sql">
-        <dl>
-          <div class="detail-block"><dt>Problem</dt><dd>Raw transactional data was flat and unmodelled — no aggregation, no customer segmentation, no repeatable reporting queries.</dd></div>
-          <div class="detail-block"><dt>What was built</dt><dd>Star schema warehouse with fact_orders, dim_customer, dim_product. RFM segmentation using window functions. Automated monthly snapshot queries with parameterized filters for stakeholder reports.</dd></div>
-          <div class="detail-block"><dt>Results</dt><dd>Reusable SQL templates reduced ad hoc reporting time. RFM scores enabled customer cohort analysis and retention strategy work.</dd></div>
-        </dl>
-      </div>
-    </div>
-
-    <!-- Bayesian -->
-    <div class="project-card" id="proj-bayes">
-      <div class="project-visual" style="background:linear-gradient(135deg,#3d1a5e 0%,#5d2d8a 70%,#7b4fb5 100%);min-height:180px;flex-direction:column;gap:8px">
-        <div style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.85);text-align:center">
-          <div style="font-size:0.65rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.6rem">Hierarchical model</div>
-          <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 14px;margin-bottom:6px">μ_region ~ Normal(μ_global, σ_global)</div>
-          <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:8px 14px;margin-bottom:6px">y_i ~ Normal(μ_region[r], σ)</div>
-          <div style="font-size:0.62rem;opacity:0.55;margin-top:0.5rem">PyMC · MCMC · Posterior inference</div>
-        </div>
-      </div>
-      <div class="project-body">
-        <div class="project-badge">Python · Statistical modelling</div>
-        <h3>Bayesian Hierarchical Modelling — Educational Mobility PH</h3>
-        <p>Undergraduate thesis. Used nationally representative labor force survey microdata to estimate intergenerational educational mobility across Philippine regions. Hierarchical Bayesian models borrow strength across small subgroups — producing credible interval estimates where classical methods break down.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Python</span>
-          <span class="tool-tag">PyMC</span>
-          <span class="tool-tag">MCMC</span>
-          <span class="tool-tag">LFS microdata</span>
-          <span class="tool-tag">Pandas</span>
-          <span class="tool-tag">ArviZ</span>
-        </div>
-        <div class="project-links">
-          <a class="proj-link" href="https://github.com/rolanddelarosaph/Bayesian-Hierarchical-Modelling-Educational-Intergenerational-Mobility-in-the-Philippines" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-          <button class="expand-btn" onclick="toggleExpand('expand-bayes',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
-        </div>
-      </div>
-      <div class="expand-panel" id="expand-bayes">
-        <dl>
-          <div class="detail-block"><dt>Problem</dt><dd>Estimating mobility metrics per Philippine region from survey data — small regional sample sizes make classical regression unreliable.</dd></div>
-          <div class="detail-block"><dt>Approach</dt><dd>Processed LFS microdata, designed hierarchical priors, fitted model with MCMC via PyMC, performed posterior predictive checks and sensitivity analysis on prior choices.</dd></div>
-          <div class="detail-block"><dt>Engineering note</dt><dd>The data pipeline for this project — ingesting, reshaping, and cleaning the LFS microdata — was itself a substantial engineering task involving design weights, multi-stage sampling adjustments, and reproducible Python scripts.</dd></div>
-          <div class="detail-block"><dt>Results</dt><dd>Region-level mobility estimates with credible intervals. Identified areas with statistically significant deviations and policy-relevant differences across generations.</dd></div>
-        </dl>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Contact</div>
-  <h2 class="section-title">Get in touch</h2>
+  <h2 class="section-title">GET IN TOUCH</h2>
   <div class="contact-grid">
     <div class="contact-info">
-      <p>I'm looking for junior data engineering roles — whether that's pipeline work, warehouse design, or anything in between. If you have something that fits or just want to talk about data systems, reach out.</p>
+      <p>Looking for junior data engineering roles — pipeline work, warehouse design, data infrastructure. If you have something that fits, or just want to talk data systems, send me a message.</p>
       <ul class="contact-list">
         <li><a href="mailto:roland.delarosa.ph@gmail.com"><i class="fa-solid fa-envelope"></i> roland.delarosa.ph@gmail.com</a></li>
         <li><a href="https://github.com/rolanddelarosaph" target="_blank"><i class="fa-brands fa-github"></i> github.com/rolanddelarosaph</a></li>
-        <li><a href="https://linkedin.com/in/rolanddelarosa" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/rolanddelarosa</a></li>
+        <li><a href="https://www.linkedin.com/in/roland-dela-rosa-5595713b9/" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/roland-dela-rosa-5595713b9</a></li>
+        <li><a href="https://public.tableau.com/app/profile/roland.dela.rosa" target="_blank"><i class="fa-solid fa-chart-bar"></i> Tableau Public</a></li>
         <li><a href="tel:+639273263487"><i class="fa-solid fa-phone"></i> +63 927 326 3487</a></li>
       </ul>
     </div>
     <div class="contact-form">
-      <div class="form-group">
-        <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" placeholder="Your name"/>
-      </div>
-      <div class="form-group">
-        <label for="cf-email">Email</label>
-        <input type="email" id="cf-email" placeholder="your@email.com"/>
-      </div>
-      <div class="form-group">
-        <label for="cf-msg">Message</label>
-        <textarea id="cf-msg" placeholder="What's on your mind?"></textarea>
-      </div>
-      <button class="btn-primary" onclick="handleContact()" style="width:100%;justify-content:center"><i class="fa-solid fa-paper-plane"></i> Send message</button>
-      <p class="form-note" id="form-note">✓ Thanks! This will open your email client with the message pre-filled so you can send it directly.</p>
+      <form id="fs-form">
+        <div class="form-group">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Your name" required/>
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" placeholder="What's on your mind?" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" id="fs-btn" style="width:100%;justify-content:center">
+          <i class="fa-solid fa-paper-plane"></i> Send message
+        </button>
+        <div class="form-status" id="fs-status"></div>
+      </form>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Roland Dela Rosa · Data Engineer · Philippines · <a href="mailto:roland.delarosa.ph@gmail.com" style="color:var(--accent2);text-decoration:none">roland.delarosa.ph@gmail.com</a></p>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/rolanddelarosaph" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/roland-dela-rosa-5595713b9/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://public.tableau.com/app/profile/roland.dela.rosa" target="_blank"><i class="fa-solid fa-chart-bar"></i> Tableau</a>
+      <a href="mailto:roland.delarosa.ph@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+    </div>
+    <div class="footer-copy">ROLAND DELA ROSA · Junior Data Engineer · Philippines</div>
+  </div>
 </footer>
 
 <script>
+// ── CARD CLICK → GITHUB ────────────────────────────────────────────────
+function handleCardClick(e, url) {
+  window.open(url, '_blank');
+}
+
+// ── DETAILS EXPAND (each card owns its own panel) ──────────────────────
 function toggleExpand(id, btn) {
   const panel = document.getElementById(id);
   const isOpen = panel.classList.contains('open');
   panel.classList.toggle('open');
-  btn.querySelector('i').style.transform = isOpen ? '' : 'rotate(180deg)';
-  btn.querySelector('i').style.transition = 'transform 0.2s';
-}
-
-function handleContact() {
-  const name = document.getElementById('cf-name').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const msg = document.getElementById('cf-msg').value.trim();
-  if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
-  const subject = encodeURIComponent('Portfolio enquiry from ' + name);
-  const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + msg);
-  window.location.href = 'mailto:roland.delarosa.ph@gmail.com?subject=' + subject + '&body=' + body;
-  document.getElementById('form-note').classList.add('show');
-}
-
-// Slideshow
-function initSlideshow(containerId, dotsId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  const slides = container.querySelectorAll('.slide');
-  const dotsContainer = document.getElementById(dotsId);
-  let current = 0;
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goTo(i);
-    dotsContainer.appendChild(dot);
-  });
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dotsContainer.querySelectorAll('.slide-dot')[current].classList.remove('active');
-    current = n;
-    slides[current].classList.add('active');
-    dotsContainer.querySelectorAll('.slide-dot')[current].classList.add('active');
+  const icon = btn.querySelector('i');
+  if (icon) {
+    icon.style.transition = 'transform 0.2s';
+    icon.style.transform = isOpen ? '' : 'rotate(180deg)';
   }
-  setInterval(() => goTo((current + 1) % slides.length), 3500);
 }
-initSlideshow('slideshow-food', 'dots-food');
+
+// ── CONTACT FORM → FORMSPREE ───────────────────────────────────────────
+// Replace YOUR_FORM_ID with the ID you get from formspree.io after signing up
+const FORMSPREE_ID = 'xeedqwpz';
+
+document.getElementById('fs-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn  = document.getElementById('fs-btn');
+  const stat = document.getElementById('fs-status');
+
+  btn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+  btn.disabled   = true;
+  stat.className = 'form-status';
+
+  try {
+    const res = await fetch(`https://formspree.io/f/xeedqwpz`, {
+      method:  'POST',
+      headers: { 'Accept': 'application/json' },
+      body:    new FormData(this)
+    });
+    if (res.ok) {
+      stat.textContent = "✓ Message sent — I'll get back to you soon.";
+      stat.className   = 'form-status success';
+      this.reset();
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    stat.textContent = '✗ Something went wrong. Email me directly at roland.delarosa.ph@gmail.com';
+    stat.className   = 'form-status error';
+    btn.innerHTML    = '<i class="fa-solid fa-paper-plane"></i> Send message';
+    btn.disabled     = false;
+  }
+});
+
+// ── MARQUEE SPEED (auto-adjusts to actual image widths) ────────────────
+window.addEventListener('load', () => {
+  const track = document.getElementById('marquee-food');
+  if (!track) return;
+  const imgs = track.querySelectorAll('img');
+  let loaded = 0;
+  const check = () => { if (++loaded === imgs.length) track.style.animationDuration = (track.scrollWidth / 2 / 80) + 's'; };
+  imgs.forEach(img => img.complete ? check() : img.addEventListener('load', check));
+});
 </script>
 </body>
 </html>
