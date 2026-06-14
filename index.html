@@ -49,6 +49,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(247,245,240,0.92);backdrop
 .pill-dbt{background:#FFF3EE;color:#c2380a;border-color:#fdba74}
 .pill-snowflake{background:#EBF8FF;color:#0369a1;border-color:#7dd3fc}
 .pill-mysql{background:#FFFBEB;color:#92400e;border-color:#fcd34d}
+.pill-docker{background:#E8F4FD;color:#1D63ED;border-color:#90CAF9}
 .pill-medallion{background:#F4F4F5;color:#52525b;border-color:#d4d4d8}
 .pill-api{background:#F5F3FF;color:#6d28d9;border-color:#c4b5fd}
 .pill-pymc{background:#FDF4FF;color:#7e22ce;border-color:#e879f9}
@@ -191,6 +192,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       <span class="pill pill-airflow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apacheairflow/apacheairflow-original.svg" alt=""/> Apache Airflow</span>
       <span class="pill pill-dbt">⬡ dbt</span>
       <span class="pill pill-snowflake">❄ Snowflake</span>
+      <span class="pill pill-docker"><i class="fa-brands fa-docker"></i> Docker</span>
       <span class="pill pill-mysql"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt=""/> MySQL</span>
       <span class="pill pill-medallion"><i class="fa-solid fa-layer-group"></i> Medallion Architecture</span>
       <span class="pill pill-api"><i class="fa-solid fa-bolt"></i> REST APIs</span>
@@ -219,11 +221,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       <div class="project-body">
         <div class="project-badge">Cloud Data Engineering · ELT</div>
         <h3>PHILIPPINE FOOD PRICE ANALYTICS PIPELINE</h3>
-        <p>Cloud ELT pipeline built on the Medallion Architecture — ingesting food price data from three real sources (WFP market CSVs, PSA CPI Excel files, and a live BSP exchange rate API) into Snowflake, transforming through dbt-modelled Bronze → Silver → Gold layers with 20 data quality tests, and scheduled monthly via a 4-task Apache Airflow DAG on Astronomer Cloud. The Gold star schema feeds a live Tableau dashboard and two Python notebooks for price trend analysis and forecasting.</p>
+        <p>Cloud ELT pipeline built on the Medallion Architecture — ingesting food price data from three real sources (WFP market CSVs, PSA CPI Excel files, and a live BSP exchange rate API) into Snowflake, transforming through dbt-modelled Bronze → Silver → Gold layers with 20 data quality tests, and scheduled monthly via a 4-task Apache Airflow DAG on Astronomer Cloud. The ingestion pipeline is containerized with Docker for reproducible execution on any machine. The Gold star schema feeds a live Tableau dashboard and two Python notebooks for price trend analysis and forecasting.</p>
         <div class="project-tools">
           <span class="tool-tag">Python</span><span class="tool-tag">Snowflake</span><span class="tool-tag">dbt</span>
           <span class="tool-tag">Apache Airflow</span><span class="tool-tag">Astronomer Cloud</span>
-          <span class="tool-tag">BSP Live API</span><span class="tool-tag">Prophet</span>
+          <span class="tool-tag">BSP Live API</span><span class="tool-tag">Docker</span><span class="tool-tag">Prophet</span>
           <span class="tool-tag">Tableau</span><span class="tool-tag">300K+ rows</span>
         </div>
         <div class="project-links">
@@ -234,7 +236,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       </div>
       <div class="expand-panel full-width" id="expand-food">
         <dl class="detail-list">
-          <div class="detail-block"><dt>Pipeline design</dt><dd>Three ingestion scripts load from different source formats into Snowflake Bronze as-is — WFP CSV (121,512 rows), PSA CPI multi-sheet Excel (179,289 rows), and a live BSP API call that appends one new exchange rate row per monthly run rather than overwriting. dbt handles all transformations: Silver models standardize column types, deduplicate via ROW_NUMBER(), and unpivot the PSA CPI from wide to long format. Gold builds a star schema — dim_region, dim_commodity, dim_date, dim_market + fact_food_prices — with surrogate keys and a price-to-CPI ratio column as the core analytical metric. The 4-task Airflow DAG (ingest → silver → gold → dbt test) runs on the 1st of every month; if any dbt test fails, the pipeline halts before bad data reaches Gold.</dd></div>
+          <div class="detail-block"><dt>Pipeline design</dt><dd>The ingestion pipeline is containerized with Docker — anyone can run it with two commands using --env-file for credentials. Three ingestion scripts load from different source formats into Snowflake Bronze as-is — WFP CSV (121,512 rows), PSA CPI multi-sheet Excel (179,289 rows), and a live BSP API call that appends one new exchange rate row per monthly run rather than overwriting. dbt handles all transformations: Silver models standardize column types, deduplicate via ROW_NUMBER(), and unpivot the PSA CPI from wide to long format. Gold builds a star schema — dim_region, dim_commodity, dim_date, dim_market + fact_food_prices — with surrogate keys and a price-to-CPI ratio column as the core analytical metric. The 4-task Airflow DAG (ingest → silver → gold → dbt test) runs on the 1st of every month; if any dbt test fails, the pipeline halts before bad data reaches Gold.</dd></div>
           <div class="detail-block"><dt>Data quality</dt><dd>20 dbt tests cover not_null, unique, accepted_values, and referential integrity across all Silver and Gold models. Tests run as the final DAG task — PASS=20, WARN=0, ERROR=0. The Bronze layer is never overwritten, preserving a full raw audit trail for every monthly run.</dd></div>
           <div class="detail-block"><dt>Analytics &amp; findings</dt><dd>BSP lag correlation analysis: peso depreciation leads food price increases by 1–2 months (r=0.29, p=0.018). Prophet forecasting with and without BSP as regressor diverges during depreciation periods — confirming exchange rate adds genuine forecast signal. Key findings: NCR food prices run 60+ index points above PSA CPI. Meat, fish, and eggs surged 80.6% from 2018–2023. Luzon is 19.7% more expensive than Mindanao for the same WFP basket.</dd></div>
         </dl>
