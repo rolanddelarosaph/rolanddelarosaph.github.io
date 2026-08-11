@@ -77,14 +77,14 @@ section{max-width:1100px;margin:0 auto;padding:4rem 2rem}
 .tl-desc{font-size:0.88rem;color:var(--ink2);line-height:1.65;font-weight:300}
 .tl-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.65rem}
 .tl-tag{font-family:var(--font-mono);font-size:0.68rem;background:var(--tag-bg);color:var(--tag-text);padding:0.18rem 0.6rem;border-radius:3px;letter-spacing:0.03em}
-.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.projects-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column;cursor:pointer;position:relative}
 .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.09)}
-.project-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
-.marquee-wrap{overflow:hidden;width:100%;height:100%;background:var(--bg);position:relative;display:flex;align-items:center}
+.project-card.featured,.project-card.wide{grid-column:1/-1;display:grid;grid-template-columns:1.08fr 1fr}
+.marquee-wrap{overflow:hidden;width:100%;height:100%;min-height:460px;background:var(--bg);position:relative;display:flex;align-items:center}
 .marquee-track{display:flex;width:max-content;animation:marquee-scroll 18s linear infinite;align-items:center}
 .marquee-track:hover{animation-play-state:paused}
-.marquee-track img{height:100%;max-height:360px;width:auto;display:block;flex-shrink:0}
+.marquee-track img{height:420px;max-height:none;width:auto;display:block;flex-shrink:0;object-fit:contain;padding:0.9rem 0.25rem;background:var(--bg)}
 @keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .project-img-wrap{width:100%;overflow:hidden;height:220px;background:var(--bg)}
 .project-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
@@ -141,10 +141,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
 @media(max-width:900px){
   .about-grid,.contact-grid{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:1fr}
-  .project-card.featured{grid-template-columns:1fr;grid-column:1}
+  .project-card.featured,.project-card.wide{grid-template-columns:1fr;grid-column:1}
   .expand-panel.full-width{grid-column:1}
-  .marquee-wrap{min-height:220px}
-  .marquee-track img{height:220px}
+  .marquee-wrap{min-height:280px}
+  .marquee-track img{height:252px;padding:0.65rem 0.2rem}
   nav .nav-links li:nth-child(n+3){display:none}
 }
 @media(max-width:580px){
@@ -243,9 +243,14 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       </div>
     </div>
 
-    <div class="project-card" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce')">
-      <div class="project-img-wrap">
-        <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+    <div class="project-card wide" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce')">
+      <div class="marquee-wrap">
+        <div class="marquee-track" id="marquee-fashion">
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+        </div>
       </div>
       <div class="project-body">
         <div class="project-badge">Data Warehouse · Business Analytics</div>
@@ -262,7 +267,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
           <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-fashion',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
         </div>
       </div>
-      <div class="expand-panel" id="expand-fashion">
+      <div class="expand-panel full-width" id="expand-fashion">
         <dl class="detail-list">
           <div class="detail-block"><dt>Pipeline design</dt><dd>Bronze: 7 tables loaded via LOAD DATA LOCAL INFILE (fastest MySQL bulk-load method), truncated and reloaded on each run for idempotency. Silver: a stored procedure (transform_silver_layer()) applies type casting for all IDs, dates, and decimals; strips percentage characters; trims whitespace; and removes duplicates via ROW_NUMBER() — all in one transactional call. Gold: star schema with dim_customer, dim_product, dim_campaign + fact_sales (2,253 rows), surrogate keys, foreign keys, and indexed on sale_date and customer_id. Campaign attribution joins on channel + date range so each line item is automatically attributed to the active campaign — no manual tagging. Full pipeline wraps every stage in a single MySQL transaction — any failure triggers a complete rollback.</dd></div>
           <div class="detail-block"><dt>Data quality &amp; execution</dt><dd>SQL-based quality tests: row count checks per layer, null checks on all primary keys, referential integrity validation, duplicate checks on dimension keys, and discount logic validation. Pipeline logs every stage to pipeline.log with timestamps — exits code 1 on failure, code 0 on success.</dd></div>
@@ -271,9 +276,14 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       </div>
     </div>
 
-    <div class="project-card" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline')">
-      <div class="project-img-wrap">
-        <img src="images/architecture lfs.png" alt="PSA LFS Educational Mobility Pipeline Architecture"/>
+    <div class="project-card wide" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline')">
+      <div class="marquee-wrap">
+        <div class="marquee-track" id="marquee-lfs">
+          <img src="images/architecture lfs.png" alt="PSA LFS Educational Mobility Pipeline Architecture"/>
+          <img src="images/bayes.png" alt=""/>
+          <img src="images/architecture lfs.png" alt="PSA LFS Educational Mobility Pipeline Architecture"/>
+          <img src="images/bayes.png" alt=""/>
+        </div>
       </div>
       <div class="project-body">
         <div class="thesis-badge">🎓 UNDERGRADUATE THESIS</div>
@@ -290,7 +300,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
           <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-lfs',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
         </div>
       </div>
-      <div class="expand-panel" id="expand-lfs">
+      <div class="expand-panel full-width" id="expand-lfs">
         <dl class="detail-list">
           <div class="detail-block"><dt>ETL pipeline</dt><dd>PSA used three different column schemas across survey years, and the K-12 reform created two incompatible grade code systems mid-2016 — the same numeric code means a different education level depending on the quarter. A schema config registry routes each file to the correct column names and grade map automatically. A 12-step cleaning pipeline then pairs parents and children within households, applies age gap filters to remove implausible pairs, and logs every run. python main.py processes all 48 files end-to-end.</dd></div>
           <div class="detail-block"><dt>Bayesian model</dt><dd>Multilevel Linear Model via Bambi/PyMC: 4 chains × 2,000 draws, all R-hat &lt; 1.01. Predictors: father's and mother's schooling years (with quadratic terms), children per household, child age, and survey year fixed effects. Region-level random intercepts and random slopes allow the father-education effect to vary by region. Prior sensitivity confirmed across 3 specifications.</dd></div>
@@ -466,12 +476,18 @@ document.getElementById('fs-form').addEventListener('submit', async function(e) 
 
 // ── MARQUEE SPEED (auto-adjusts to actual image widths) ────────────────
 window.addEventListener('load', () => {
-  const track = document.getElementById('marquee-food');
-  if (!track) return;
-  const imgs = track.querySelectorAll('img');
-  let loaded = 0;
-  const check = () => { if (++loaded === imgs.length) track.style.animationDuration = (track.scrollWidth / 2 / 80) + 's'; };
-  imgs.forEach(img => img.complete ? check() : img.addEventListener('load', check));
+  const tracks = document.querySelectorAll('.marquee-track');
+  tracks.forEach(track => {
+    const imgs = track.querySelectorAll('img');
+    let loaded = 0;
+    const check = () => {
+      loaded += 1;
+      if (loaded === imgs.length) {
+        track.style.animationDuration = (track.scrollWidth / 2 / 80) + 's';
+      }
+    };
+    imgs.forEach(img => img.complete ? check() : img.addEventListener('load', check));
+  });
 });
 </script>
 </body>
