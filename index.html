@@ -243,39 +243,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       </div>
     </div>
 
-    <div class="project-card wide" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce')">
-      <div class="marquee-wrap">
-        <div class="marquee-track" id="marquee-fashion">
-          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
-          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
-          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
-          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
-        </div>
-      </div>
-      <div class="project-body">
-        <div class="project-badge">Data Warehouse · Business Analytics</div>
-        <h3>EUROPEAN FASHION RETAIL DATA WAREHOUSE</h3>
-        <p>End-to-end SQL data warehouse built entirely in MySQL and Python — no cloud services, no orchestration tools. A single python main.py command runs the full 4-stage pipeline (Bronze → Silver → Gold) wrapped in a MySQL transaction that rolls back on any failure. Stored procedures handle all Silver transformations. The Gold star schema is built with foreign key constraints, indexed fact table, and 4 BI-ready views, supporting 14 business analytics queries across revenue, products, customers, campaigns, and inventory.</p>
-        <div class="project-tools">
-          <span class="tool-tag">MySQL 8.0</span><span class="tool-tag">Python</span>
-          <span class="tool-tag">Stored Procedures</span><span class="tool-tag">Star Schema</span>
-          <span class="tool-tag">Window Functions</span><span class="tool-tag">CTEs</span>
-          <span class="tool-tag">RANK() · LAG()</span>
-        </div>
-        <div class="project-links">
-          <a class="proj-link" href="https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce" target="_blank" onclick="event.stopPropagation()"><i class="fa-brands fa-github"></i> GitHub</a>
-          <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-fashion',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
-        </div>
-      </div>
-      <div class="expand-panel full-width" id="expand-fashion">
-        <dl class="detail-list">
-          <div class="detail-block"><dt>Pipeline design</dt><dd>Bronze: 7 tables loaded via LOAD DATA LOCAL INFILE (fastest MySQL bulk-load method), truncated and reloaded on each run for idempotency. Silver: a stored procedure (transform_silver_layer()) applies type casting for all IDs, dates, and decimals; strips percentage characters; trims whitespace; and removes duplicates via ROW_NUMBER() — all in one transactional call. Gold: star schema with dim_customer, dim_product, dim_campaign + fact_sales (2,253 rows), surrogate keys, foreign keys, and indexed on sale_date and customer_id. Campaign attribution joins on channel + date range so each line item is automatically attributed to the active campaign — no manual tagging. Full pipeline wraps every stage in a single MySQL transaction — any failure triggers a complete rollback.</dd></div>
-          <div class="detail-block"><dt>Data quality &amp; execution</dt><dd>SQL-based quality tests: row count checks per layer, null checks on all primary keys, referential integrity validation, duplicate checks on dimension keys, and discount logic validation. Pipeline logs every stage to pipeline.log with timestamps — exits code 1 on failure, code 0 on success.</dd></div>
-          <div class="detail-block"><dt>Business findings</dt><dd>€324,236 revenue · 905 orders · €358 AOV. Only 9.8% of orders were discounted (avg 24.3% off) — 92.7% of revenue is full-price, meaning healthy margin discipline. 55% of product-country inventory positions at critical stock levels, with the stockout risk query identifying which high-velocity SKUs are also most exposed — the highest-replenishment-priority items.</dd></div>
-        </dl>
-      </div>
-    </div>
-
     <div class="project-card wide" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline')">
       <div class="marquee-wrap">
         <div class="marquee-track" id="marquee-lfs">
@@ -309,7 +276,41 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
       </div>
     </div>
 
-  </div>
+  
+<div class="project-card wide" onclick="handleCardClick(event,'https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce')">
+      <div class="marquee-wrap">
+        <div class="marquee-track" id="marquee-fashion">
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+          <img src="images/architecture datawarehouse.png" alt="European Fashion Retail Data Warehouse Architecture"/>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-badge">Data Warehouse · Business Analytics</div>
+        <h3>EUROPEAN FASHION RETAIL DATA WAREHOUSE</h3>
+        <p>End-to-end SQL data warehouse built entirely in MySQL and Python — no cloud services, no orchestration tools. A single python main.py command runs the full 4-stage pipeline (Bronze → Silver → Gold) wrapped in a MySQL transaction that rolls back on any failure. Stored procedures handle all Silver transformations. The Gold star schema is built with foreign key constraints, indexed fact table, and 4 BI-ready views, supporting 14 business analytics queries across revenue, products, customers, campaigns, and inventory.</p>
+        <div class="project-tools">
+          <span class="tool-tag">MySQL 8.0</span><span class="tool-tag">Python</span>
+          <span class="tool-tag">Stored Procedures</span><span class="tool-tag">Star Schema</span>
+          <span class="tool-tag">Window Functions</span><span class="tool-tag">CTEs</span>
+          <span class="tool-tag">RANK() · LAG()</span>
+        </div>
+        <div class="project-links">
+          <a class="proj-link" href="https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce" target="_blank" onclick="event.stopPropagation()"><i class="fa-brands fa-github"></i> GitHub</a>
+          <button class="expand-btn" onclick="event.stopPropagation();toggleExpand('expand-fashion',this)"><i class="fa-solid fa-chevron-down"></i> Details</button>
+        </div>
+      </div>
+      <div class="expand-panel full-width" id="expand-fashion">
+        <dl class="detail-list">
+          <div class="detail-block"><dt>Pipeline design</dt><dd>Bronze: 7 tables loaded via LOAD DATA LOCAL INFILE (fastest MySQL bulk-load method), truncated and reloaded on each run for idempotency. Silver: a stored procedure (transform_silver_layer()) applies type casting for all IDs, dates, and decimals; strips percentage characters; trims whitespace; and removes duplicates via ROW_NUMBER() — all in one transactional call. Gold: star schema with dim_customer, dim_product, dim_campaign + fact_sales (2,253 rows), surrogate keys, foreign keys, and indexed on sale_date and customer_id. Campaign attribution joins on channel + date range so each line item is automatically attributed to the active campaign — no manual tagging. Full pipeline wraps every stage in a single MySQL transaction — any failure triggers a complete rollback.</dd></div>
+          <div class="detail-block"><dt>Data quality &amp; execution</dt><dd>SQL-based quality tests: row count checks per layer, null checks on all primary keys, referential integrity validation, duplicate checks on dimension keys, and discount logic validation. Pipeline logs every stage to pipeline.log with timestamps — exits code 1 on failure, code 0 on success.</dd></div>
+          <div class="detail-block"><dt>Business findings</dt><dd>€324,236 revenue · 905 orders · €358 AOV. Only 9.8% of orders were discounted (avg 24.3% off) — 92.7% of revenue is full-price, meaning healthy margin discipline. 55% of product-country inventory positions at critical stock levels, with the stockout risk query identifying which high-velocity SKUs are also most exposed — the highest-replenishment-priority items.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    </div>
 </section>
 
 <div class="divider"><hr></div>
