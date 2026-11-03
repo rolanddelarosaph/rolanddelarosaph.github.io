@@ -1,83 +1,157 @@
-# Roland Dela Rosa — Data Engineer Portfolio
+# Roland Dela Rosa — Data & Analytics Portfolio
 
-**Live site:** https://rolanddelarosaph.github.io
+**Live portfolio:** https://rolanddelarosaph.github.io  
+**GitHub:** https://github.com/rolanddelarosaph
 
----
+This repository contains my personal portfolio: a place to bring together projects, practical experience, and the different ways I work with data. The projects cover the full path from collecting and preparing data to modelling it, analysing it, and presenting the results.
 
-## Overview
+My work sits across **data engineering, analytics engineering, and data analytics**. I enjoy building the foundations that make data useful — pipelines, transformations, data models, and reporting workflows — while keeping sight of the questions the data is meant to answer.
 
-Personal portfolio website for Roland Dela Rosa, a Data Engineer and final-year BS Statistics student at Rizal Technological University (DOST Undergraduate Scholar, Magna Cum Laude). Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools, deployed via GitHub Pages.
-
----
-
-## Repository Structure
-
-```
-rolanddelarosaph.github.io/
-├── index.html          # Main portfolio page
-├── README.md           # This file
-├── .gitignore
-└── images/
-    ├── architecture food pipeline.png
-    ├── architecture datawarehouse.png
-    ├── architecture lfs.png
-    ├── ph_food_price_dashboard.png
-    └── bayesian_model_result.png
-```
+The portfolio is intended to give a clear picture of that range rather than position me around only one job title.
 
 ---
 
-## Projects
+## Featured projects
 
-### Philippine Food Price Analytics Pipeline
+The projects are presented in the following order, from the most recent end-to-end platform project to the earlier warehouse and research work.
 
-End-to-end cloud ELT pipeline ingesting 300K+ rows from three real data sources (WFP market prices, PSA Consumer Price Index, and a live BSP exchange rate API) into Snowflake through a Medallion Architecture. dbt handles Bronze to Silver to Gold transformations with 20 automated data quality tests. A 4-task Apache Airflow DAG on Astronomer Cloud schedules the full pipeline on the 1st of every month. Output feeds a live Tableau dashboard and two analytical notebooks covering exchange rate lag analysis and Prophet time-series forecasting.
+### 1. Australian Hospital Performance Analytics
 
-**Stack:** Python · Snowflake · dbt · Apache Airflow · Astronomer Cloud · Tableau · Prophet
+An end-to-end hospital analytics project using Australian Institute of Health and Welfare (AIHW) MyHospitals data. I built a scheduled Bronze–Silver–Gold workflow in Microsoft Fabric, using API ingestion and PySpark to clean, transform, and model hospital performance data. Fabric Data Factory schedules and orchestrates the pipeline stages, while the semantic model and Power BI dashboards let users explore emergency department activity and elective surgery performance across Australian hospitals.
 
-**Repository:** https://github.com/rolanddelarosaph/ph-food-price-pipeline
+**Tools:** Microsoft Fabric · Fabric Data Factory · PySpark · Power BI · DAX · REST API
 
----
+**Repository:** https://github.com/rolanddelarosaph/australian-hospital-performance-analytics
 
-### European Fashion Retail Data Warehouse
+### 2. Philippine Food Price Analytics Pipeline
 
-End-to-end SQL data warehouse for a fashion retailer across six European countries. A single Python command runs the full 4-stage Medallion pipeline — Bronze loaded via LOAD DATA LOCAL INFILE, Silver cleaned through stored procedures with type casting and ROW_NUMBER() deduplication, Gold built as a star schema with foreign key constraints and indexed fact table — all wrapped in a MySQL transaction that rolls back on any failure. Includes 14 business analytics queries using window functions, CTEs, RANK(), and LAG().
+A cloud ELT project combining Philippine food-price data, PSA Consumer Price Index data, and exchange-rate information. Python handles ingestion and preparation, Snowflake provides the cloud data warehouse, and dbt organises the transformations into analytical models. Apache Airflow is used for orchestration, with Docker supporting the development environment. Python notebooks explore food-price movements, inflation, exchange-rate relationships, and time-series forecasting, while the Tableau dashboard presents market trends and regional comparisons.
 
-**Stack:** MySQL 8.0 · Python · Stored Procedures · Star Schema · Window Functions · CTEs
+**Tools:** Python · Snowflake · dbt · Apache Airflow · Astronomer Cloud · Docker · Tableau · pandas · Prophet
+
+**Repository:** https://github.com/rolanddelarosaph/ph-food-price-pipeline  
+**Tableau dashboard:** https://public.tableau.com/app/profile/roland.dela.rosa/viz/PHFoodPriceDashboard/DASHBOARD
+
+### 3. PSA Labor Force Survey — Educational Intergenerational Mobility
+
+My undergraduate thesis examines intergenerational mobility in the Philippines across educational, occupational, and income outcomes. This public repository focuses on the educational component. It contains the pipeline used to prepare quarterly Philippine Statistics Authority Labor Force Survey files, account for changes in survey schemas and education coding, clean and recode records, and construct parent–child household relationships for educational mobility analysis. The prepared data is used for Bayesian multilevel modelling with PyMC and Bambi to examine educational mobility and regional differences across the Philippines.
+
+The occupational and income components are part of the broader thesis, but their analysis workflows are not included in this repository showcase as completed, reproducible components. They required additional data cleaning, organisation, and computational resources, so I have kept the public project scope focused on the educational work that is organised for presentation.
+
+**Tools:** Python · pandas · PyMC · Bambi · ArviZ · ETL · Bayesian Multilevel Modelling
+
+**Repository:** https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline
+
+### 4. European Fashion Retail Data Warehouse
+
+A SQL and Python data warehouse project built around a European fashion e-commerce dataset. The workflow organises source data into Bronze, Silver, and Gold layers, applies cleaning and deduplication, and builds a dimensional model for analytical queries. The Gold layer uses a star schema, while reusable SQL queries use joins, CTEs, ranking, and window functions to answer business questions about sales, products, customers, and inventory.
+
+**Tools:** MySQL 8.0 · Python · SQL · Stored Procedures · Star Schema · CTEs · Window Functions
 
 **Repository:** https://github.com/rolanddelarosaph/datawarehouse-european-ecommerce
 
 ---
 
-### PSA LFS Educational Mobility — ETL Pipeline and Bayesian Multilevel Analysis
+## Skills and tools
 
-ETL pipeline processing 11.28 million rows of PSA Labor Force Survey microdata across 48 quarterly CSV files spanning 2010 to 2024. The pipeline handles three distinct PSA column schemas and two grade coding systems introduced by the K-12 reform mid-2016 using a schema config registry in settings.py. A 12-step cleaning pipeline produces 122,591 father-son pairs fed into a Bayesian Multilevel Linear Model estimating intergenerational educational mobility across all 17 Philippine regions. Built as an undergraduate thesis at Rizal Technological University.
+| Area | Technologies and methods |
+|---|---|
+| Programming and querying | Python, R, SQL |
+| Data platforms and storage | Microsoft Fabric, Snowflake, MySQL |
+| Cloud knowledge | AWS (working knowledge) |
+| Data engineering | ETL / ELT, API ingestion, data pipelines, data quality checks, medallion architecture |
+| Transformation and orchestration | PySpark, dbt, Microsoft Fabric Data Factory, Apache Airflow, Astronomer Cloud |
+| Data modelling | Dimensional modelling, star schema, fact and dimension tables |
+| Analytics and visualisation | Power BI, DAX, Tableau, pandas, NumPy, matplotlib |
+| Statistical analysis | Regression, time-series forecasting, Bayesian modelling, PyMC, Bambi, ArviZ |
+| Development workflow | Git, GitHub, Jupyter Notebook, Docker |
 
-**Stack:** Python · PyMC · Bambi · ArviZ · pandas · ETL Pipeline
-
-**Repository:** https://github.com/rolanddelarosaph/psa-lfs-educational-mobility-pipeline
+The tools listed above reflect the technologies used across the projects in this portfolio. The depth of experience varies by tool and project; the linked repositories provide the implementation details.
 
 ---
 
-## Technical Stack
+## Experience
 
-| Area | Tools |
-|---|---|
-| Languages | Python, SQL |
-| Cloud Data Warehouse | Snowflake |
-| Transformation | dbt |
-| Orchestration | Apache Airflow, Astronomer Cloud |
-| Database | MySQL 8.0 |
-| Statistical Modelling | PyMC, Bambi, ArviZ |
-| Visualisation | Tableau, matplotlib, seaborn |
-| Architecture Patterns | Medallion Architecture, Star Schema, ETL, ELT |
+My professional background includes client and platform support at Cognizant, customer service and business-analysis work at Amazon, and independent statistical consulting. These roles have helped me develop a practical approach to investigating problems, working with operational data, communicating findings, and building reporting solutions.
+
+For the full work history and role details, see the **Experience** section of the live portfolio.
+
+---
+
+## About
+
+I hold a **Bachelor of Science in Statistics** from Rizal Technological University. My academic training gave me a foundation in statistical reasoning, research methods, and quantitative analysis, which I apply alongside my project work in data engineering and analytics.
+
+I graduated **Magna Cum Laude** and was a **DOST-SEI scholar**.
+
+I am interested in opportunities across data engineering, analytics engineering, and data analytics — particularly roles where data preparation, modelling, analysis, and reporting are connected parts of the same workflow.
+
+---
+
+## Repository structure
+
+```text
+rolanddelarosaph.github.io/
+├── index.html
+├── README.md
+├── .gitignore
+└── images/
+    ├── profile.png
+    ├── aihw_architecture.png
+    ├── elective_surgery_dashboard.png
+    ├── emergency_department_dashboard.png
+    ├── architecture food pipeline.png
+    ├── ph_food_price_dashboard.png
+    ├── architecture lfs.png
+    ├── bayes.png
+    └── architecture datawarehouse.png
+```
+
+The project detail panels and image galleries are part of `index.html`. Project source code and full technical documentation remain in their respective GitHub repositories.
+
+---
+
+## Run locally
+
+This is a static website built with HTML, CSS, and vanilla JavaScript. It does not require a package manager, build step, or framework.
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/rolanddelarosaph/rolanddelarosaph.github.io.git
+   ```
+
+2. Open the project folder:
+
+   ```bash
+   cd rolanddelarosaph.github.io
+   ```
+
+3. Open `index.html` in a browser, or use a local development server:
+
+   ```bash
+   python3 -m http.server 8000
+   ```
+
+4. Visit `http://localhost:8000`.
+
+Keep the `images/` folder beside `index.html`; the page uses relative image paths.
+
+---
+
+## Deployment
+
+The portfolio is hosted with **GitHub Pages** from the repository's `main` branch. Changes pushed to `main` are published by GitHub Pages.
 
 ---
 
 ## Contact
 
-**Email:** roland.delarosa.ph@gmail.com
+- **Email:** roland.delarosa.ph@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/roland-dela-rosa-5595713b9/
+- **GitHub:** https://github.com/rolanddelarosaph
+- **Tableau Public:** https://public.tableau.com/app/profile/roland.dela.rosa
 
-**LinkedIn:** https://www.linkedin.com/in/roland-dela-rosa-5595713b9/
+---
 
-**GitHub:** https://github.com/rolanddelarosaph
+*This portfolio is a work in progress. I update it as I build, improve, and document projects.*
